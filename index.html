@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
    <link rel="stylesheet" href="css/estilos.css">
+   <script src="js/app.js"></script> 
 </head>
 <body>
    
@@ -38,7 +39,8 @@
                 <option value="Egresos">-</option>
             </select>
             <input type="text" class="agregar_descripcion" placeholder="Agregar Descripcion">
-            <input type="number" class="agregar_valor" value="valor" step="any" placeholder="valor">
+            <input type="number" class="agregar_valor"  placeholder="valor" step="any">
+            <input type="text">
             <button class="agregar_btn"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
         </div>
     </div>
@@ -48,7 +50,7 @@
     <div class="ingreso">
         <h2 class="ingreso_titulo">ingresos</h2>
         <div id="lista-ingresos">
-            <div class="elementos limpiarEstilos">
+            <div class="elemento limpiarEstilos">
                 <div class="elemento_descripcion">Salario</div>
                 <div class="derecha limpiarEstilos">
                     <div class="elemento_valor">+2,200.00</div>
