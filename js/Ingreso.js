@@ -1,4 +1,4 @@
-const dato = require('./Dato');
+
 
 class ingreso extends dato() {
     static contadorIngreso = 0;
@@ -15,4 +15,4 @@ class ingreso extends dato() {
 }
 
 
-module.exports = ingreso;
+//module.exports = ingreso;
