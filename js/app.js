@@ -35,8 +35,8 @@ let egresos = []
 
 const totalIngresos = () => {
     let totalIngreso = 0;
-    for (let ingreso of Object.values(ingresos)) {
-        totalIngreso += ingreso;
+    for (let ingreso of ingresos /*Object.values()*/) {
+        totalIngreso += ingreso.valor;
     }
     return totalIngreso;
 };
@@ -44,8 +44,8 @@ const totalIngresos = () => {
 
 const totalEgresos = () => {
     let totalEgreso = 0;
-    for (let egreso of Object.values(egresos)) {
-        totalEgreso += egreso;
+    for (let egreso of egresos /*Object.values()*/) {
+        totalEgreso += egreso.valor;
     }
     return totalEgreso;
 };
@@ -70,7 +70,8 @@ const formatoPorcentaje = (valor) => {
 
 const cargarCabecero = () => {
     const presupuesto = totalIngresos() - totalEgresos();
-    const porcentajeEgreso = totalEgresos() / totalIngresos();
+    const totalIngreso = totalIngresos();
+    const porcentajeEgreso = totalIngreso ? totalEgresos() / totalIngresos() : 0;
     
 
     document.getElementById('presupuesto').innerHTML = formatoMoneda(presupuesto);
@@ -101,7 +102,7 @@ const crearIngresoHTML = (ingreso) => {
    const ingresoHTML =  `
     <div class="elemento limpiarEstilos">
     <div class="elemento_descripcion">${ingreso.descripcion}</div>
-    <div class="derecha limpiarEstilos"
+    <div class="derecha limpiarEstilos">
     <div class="elemento_valor">+ ${formatoMoneda(ingreso.valor)}</div>
     <div class="elemento_eliminar">
     <button class="elemento_eliminar--btn">
@@ -123,11 +124,12 @@ const crearIngresoHTML = (ingreso) => {
         };
         
         const crearEgresoHTML = (egreso) => {
-            let egresoHTML = `
+            const egresoHTML = `
             <div class="elemento limpiarEstilos">
             <div class="elemento_descripcion">${egreso.descripcion}</div>
-            <div class="derecha limpiarEstilos"
-            <div class="elemento_valor">+ ${formatoMoneda(egreso.valor)}</div>
+            <div class="derecha limpiarEstilos">
+            <div class="elemento_valor">- ${formatoMoneda(egreso.valor)}</div>
+             <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor / totalIngresos())}</div>
             <div class="elemento_eliminar"
             <button class="elemento_eliminar--btn">
             <ion-icon name="close-circle-outline" onclick="eliminarEgreso(${egreso.id})"></ion-icon>
@@ -141,23 +143,23 @@ const crearIngresoHTML = (ingreso) => {
 
         const eliminarIngreso =(id) => {
     const indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
-    //if (indiceEliminar !== -1){}
+    if (indiceEliminar !== -1){
     ingresos.splice(indiceEliminar,1);
     cargarCabecero();
     cargarIngresos();
-        
+    }
 };
 
 const eliminarEgreso = (id) => {
     const indiceEliminar = egresos.findIndex(egreso => egreso.id === id);
-    //if (indiceEliminar !== -1){}
+    if (indiceEliminar !== -1){
     egresos.splice(indiceEliminar, 1);
     cargarCabecero();
     cargarEgresos();
-    
+    }
 };
 
-const agregarDato = () => {
+const agregarDato = () => {0
     const forma = document.getElementById('forma');
     const tipo = forma.tipo.value;
     const descripcion = forma.descripcion.value;
@@ -165,11 +167,11 @@ const agregarDato = () => {
 
     if (descripcion !=='' && !isNaN(valor) && valor > 0) {
         if(tipo === 'ingreso') {
-            ingresos.push({id: ingreso.length + 1, descripcion, valor});
+            ingresos.push(new Ingreso(descripcion, valor));
             cargarCabecero();
             cargarIngresos();
         } else if (tipo ==='egreso') {
-            egresos.push({id: egresos.length + 1, descripcion, valor});
+            egresos.push(new Egreso(descripcion, valor));
             cargarCabecero();
             cargarEgresos();
         }
@@ -185,3 +187,7 @@ const cargarApp = () => {
 //cargarApp();
 
 window.onload = cargarApp;
+
+document.querySelector('.agregar_btn').addEventListener('click', (Event) => {agregarDato();
+    
+});

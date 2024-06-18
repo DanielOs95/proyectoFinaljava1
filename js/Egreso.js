@@ -1,12 +1,12 @@
 
 
-class egreso extends dato() {
+class Egreso extends Dato() {
 
-    static contadoregreso = 0;
+    static contadorEgreso = 0;
     
     constructor (descripcion, valor) {
      super (descripcion, valor);
-     this._id = ++egreso.contadorEgreso;
+     this._id = ++Egreso.contadorEgreso;
     }
 
     get id() {
@@ -14,5 +14,3 @@ class egreso extends dato() {
     }
 
 }
-
-//module.exports = egreso;

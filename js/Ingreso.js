@@ -1,11 +1,11 @@
 
 
-class ingreso extends dato() {
+class Ingreso extends Dato() {
     static contadorIngreso = 0;
     
     constructor (descripcion, valor) {
      super (descripcion, valor);
-     this._id = ++ingreso.contadorIngreso;
+     this._id = ++Ingreso.contadorIngreso;
     }
 
     get id() {
@@ -15,4 +15,3 @@ class ingreso extends dato() {
 }
 
 
-//module.exports = ingreso;
