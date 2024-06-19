@@ -1,24 +1,4 @@
-//const ingreso = require('./Ingreso');
-//const egreso = require('./Egreso');
 
-/*let egresos = {
-    Renta: 900,
-    Ropa: 400
-};
-let ingresos = {
-    Quincena: 9000,
-    Venta: 400
-}; */
-
-/*let ingresos = {
-salario: 20000,
-ventaAuto: 50000
-}
-
-let egresos = {
-renta: 4000, 
-ropa: 800
-}*/
 
 /*let ingresos = [
     { id: 1, descripcion: 'Salario', valor: 20000 },
@@ -75,7 +55,7 @@ const cargarCabecero = () => {
     
 
     document.getElementById('presupuesto').innerHTML = formatoMoneda(presupuesto);
-    document.getElementById('porcentaje').innerHTML = formatoMoneda(porcentajeEgreso);
+    document.getElementById('porcentaje').innerHTML = formatoPorcentaje(porcentajeEgreso);
     document.getElementById('ingresos').innerHTML = formatoMoneda(totalIngresos());
     document.getElementById('egresos').innerHTML = formatoMoneda(totalEgresos());
 //return { presupuesto, porcentajeEgreso };
@@ -130,7 +110,7 @@ const crearIngresoHTML = (ingreso) => {
             <div class="derecha limpiarEstilos">
             <div class="elemento_valor">- ${formatoMoneda(egreso.valor)}</div>
              <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor / totalIngresos())}</div>
-            <div class="elemento_eliminar"
+            <div class="elemento_eliminar">
             <button class="elemento_eliminar--btn">
             <ion-icon name="close-circle-outline" onclick="eliminarEgreso(${egreso.id})"></ion-icon>
             </button>
@@ -160,11 +140,10 @@ const eliminarEgreso = (id) => {
 };
 
 const agregarDato = () => {0
-    const forma = document.getElementById('forma');
-    const tipo = forma.tipo.value;
-    const descripcion = forma.descripcion.value;
-    const valor = parseFloat(forma.valor.value);
-
+   const tipo = document.getElementById('tipo').value;
+   const descripcion = document.getElementById('descripcion').value;
+   const valor = parseFloat(document.getElementById('valor').value);
+   
     if (descripcion !=='' && !isNaN(valor) && valor > 0) {
         if(tipo === 'ingreso') {
             ingresos.push(new Ingreso(descripcion, valor));
@@ -188,6 +167,11 @@ const cargarApp = () => {
 
 window.onload = cargarApp;
 
-document.querySelector('.agregar_btn').addEventListener('click', (Event) => {agregarDato();
+
+document.addEventListener('DOMContentLoaded', () => {
+document.querySelector('.agregar_btn').addEventListener('click', (event) => {
+    event.preventDefault();
+    agregarDato();
     
+});
 });

@@ -20,4 +20,4 @@ set valor (valor) {
 this.valor = valor;
 }
 
-}
+};

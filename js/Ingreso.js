@@ -1,6 +1,6 @@
 
 
-class Ingreso extends Dato() {
+class Ingreso extends Dato {
     static contadorIngreso = 0;
     
     constructor (descripcion, valor) {
@@ -12,6 +12,6 @@ class Ingreso extends Dato() {
         return this._id;
     }
 
-}
+};
 
 

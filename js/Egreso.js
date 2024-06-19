@@ -1,6 +1,6 @@
 
 
-class Egreso extends Dato() {
+class Egreso extends Dato {
 
     static contadorEgreso = 0;
     
@@ -13,4 +13,4 @@ class Egreso extends Dato() {
         return this._id;
     }
 
-}
+};
