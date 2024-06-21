@@ -8,8 +8,74 @@
    
 </head>
 <body onload="cargarApp()">
+
+
+<!-- Cabecero -->
+<div class="cabecero">
+    <div class="presupuesto">
+        <div class="presupuesto_titulo">Presupuesto Disponible</div>
+        <div class="presupuesto_valor" id="presupuesto">+2,000.00</div>
+        <div class="presupuesto_ingreso limpiarEstilos">
+            <div class="presupuesto_ingreso--texto">Ingresos</div>
+            <div class="derecha">
+                <div class="presupuesto_ingreso--valor" id="ingresos">+4,000.00</div>
+                <div class="presupuesto_ingreso--porcentaje"></div>
+            </div>
+        </div>
+        <div class="presupuesto_egreso limpiarEstilos">
+            <div class="presupuesto_egreso--texto">Egresos</div>
+            <div class="derecha limpiarEstilos">
+                <div class="presupuesto_egreso--valor" id="egresos">-1,900.00</div>
+                <div class="presupuesto_egreso--porcentaje" id="porcentaje">45 %</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Formulario -->
+<form id="forma" onsubmit="return false;">
+    <div class="agregar">
+        <div class="agregar_contenedor">
+            <select class="agregar_tipo" id="tipo">
+                <option value="ingreso" selected>+</option>
+                <option value="egreso">-</option>
+            </select>
+            <input type="text" class="agregar_descripcion" id="descripcion" placeholder="Agregar Descripción">
+            <input type="number" class="agregar_valor" id="valor" placeholder="Valor" step="any">
+            <button class="agregar_btn" onclick="agregarDato()">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- Contenedor -->
+<div class="contenedor limpiarEstilos">
+    <div class="ingreso">
+        <h2 class="ingreso_titulo">Ingresos</h2>
+        <div id="lista-ingresos">
+            <!-- Aquí se cargarán los ingresos dinámicamente -->
+        </div>
+    </div>
+    <div class="egreso">
+        <h2 class="egreso_titulo">Egresos</h2>
+        <div id="lista-egresos">
+            <!-- Aquí se cargarán los egresos dinámicamente -->
+        </div>
+    </div>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+
    
-    <div class="cabecero">
+    
+
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
+
+<!--<div class="cabecero">
        <div class="presupuesto">
         <div class="presupuesto_titulo">Presupuesto Disponible</div>
       
@@ -35,8 +101,8 @@
     <div class="agregar">
         <div class="agregar_contenedor">
             <select class="agregar_tipo" id="tipo">
-                <option value="ingresos">+</option>
-                <option value="egresos">-</option>
+                <option value="ingreso">+</option>
+                <option value="egreso">-</option>
             </select>
             <input type="text" class="agregar_descripcion" id="descripcion" placeholder="Agregar Descripcion">
             <input type="number" class="agregar_valor" id="valor" placeholder="valor" step="any"> 
@@ -87,12 +153,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
-<script src="js/app.js"></script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-</body>
-</html>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
