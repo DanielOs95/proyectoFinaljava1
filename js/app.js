@@ -135,7 +135,11 @@ export const agregarDato = () => {
     }
 };
 
+function registrarFuncionesGlobales(){
 window.cargarApp = cargarApp;
 window.agregarDato = agregarDato;
 window.eliminarIngreso = eliminarIngreso;
 window.eliminarEgreso = eliminarEgreso;
+}
+
+registrarFuncionesGlobales()
